@@ -1,0 +1,7 @@
+.nav-item > button {
+	border-radius: 3px;
+}
+
+.nav-item > button:hover {
+	background-color: rgb(43, 90, 90);
+}
