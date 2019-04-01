@@ -1,7 +1,35 @@
-.nav-item > button {
-	border-radius: 3px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.nav-item > button:hover {
-	background-color: rgb(43, 90, 90);
+.nav-menu-items {
+  display: flex;
+  height: 50px;
+}
+
+.nav-menu-items li {
+  list-style-type: none;
+  font-size: 20px;
+  color: gray;
+  height: 100%;
+  flex-basis: 5%;
+  position: relative;
+}
+
+.nav-menu-items li i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.nav-menu-items li:hover {
+  background: lightgray;
+}
+
+.nav-menu-items li:nth-child(1) {
+  margin-left: 0px;
 }
