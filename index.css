@@ -12,9 +12,18 @@
   width: 100%;
 }
 
+.nav-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  z-index: 10;
+  background: white;
+}
+
 .nav-menu-items {
   display: flex;
-  height: 50px;
 }
 
 .nav-menu-items,
@@ -30,6 +39,8 @@
   flex-basis: 5%;
   position: relative;
   cursor: pointer;
+  z-index: inherit;
+  transition: background 0.5s ease;
 }
 
 .nav-menu-items li i {
@@ -38,9 +49,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: inherit;
 }
 
 .nav-menu-items li:hover {
+  background: lightgray;
+}
+
+.nav-toggled {
   background: lightgray;
 }
 
@@ -48,12 +64,13 @@
   margin-left: 0px;
 }
 
-.popup-box-overlay-mail {
+.go-to-mail-popup {
   position: absolute;
   height: 40px;
   width: 150px;
   border-radius: 5px;
   left: 50px;
+  top: 50px;
 }
 
 .mail-popup {
@@ -64,16 +81,28 @@
   left: 0;
   border-radius: 5px;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1;
+}
+
+.mail-toggled {
+  opacity: 1;
+  transform: translateY(0%);
+  pointer-events: auto;
 }
 
 .mail-popup:hover {
   background: lightgrey;
 }
 
-.popup-box-overlay-mail p {
+.go-to-mail-popup p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 1;
 }
