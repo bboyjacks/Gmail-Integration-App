@@ -18,7 +18,6 @@
     4. MailToggleObserver: Extends Observer which listens for changes
     in navigation bar and updates the mail pop up accordingly
 */
-
 window.onload = () => {
   initListeners();
   loadGmailClient();
@@ -35,6 +34,7 @@ const DISCOVERYDOCS = [
   "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"
 ];
 const SCOPES = "https://www.googleapis.com/auth/gmail.readonly";
+
 const loadGmailClient = () => {
   gapi.load("client:auth2", () => {
     gapi.client
@@ -56,9 +56,9 @@ const loadGmailClient = () => {
 
 const updateSigninStatus = isSignedIn => {
   if (isSignedIn) {
-    console.log("Signed in!");
+    console.log("User is signed in");
   } else {
-    console.log("Not yet signed in.");
+    console.log("User is logged out");
   }
 };
 
@@ -70,20 +70,19 @@ const gmailSignIn = () => {
   Functions
 */
 const initListeners = () => {
-  let observable = new Observable();
-
+  let appObservable = new Observable();
   let navToggleObserver = new NavToggleObserver();
-  observable.addObservers(navToggleObserver);
+  appObservable.addObserver(navToggleObserver);
 
   let mailToggleObserver = new MailToggleObserver();
-  observable.addObservers(mailToggleObserver);
+  appObservable.addObserver(mailToggleObserver);
 
   let mailClickedObserver = new MailClickedObserver();
-  observable.addObservers(mailClickedObserver);
+  appObservable.addObserver(mailClickedObserver);
 
   let app = document.querySelector(".app");
   app.addEventListener("click", event => {
-    observable.notifyObservers(event);
+    appObservable.notifyObservers(event);
   });
 };
 
@@ -95,16 +94,19 @@ class Observable {
   constructor() {
     this.observers = [];
     this.notifyObservers = this.notifyObservers.bind(this);
-    this.addObservers = this.addObservers.bind(this);
+    this.addObserver = this.addObserver.bind(this);
   }
 
-  addObservers(o) {
+  addObserver(o) {
     this.observers.push(o);
   }
 
-  notifyObservers(event) {
+  notifyObservers(message) {
     this.observers.forEach(observer => {
-      observer.update(event);
+      observer.update({
+        event: message.event,
+        gmailStatus: message.gmailStatus
+      });
     });
   }
 }
