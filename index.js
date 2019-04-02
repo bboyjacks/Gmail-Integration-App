@@ -126,9 +126,6 @@ const initListeners = () => {
   let navToggleObserver = new NavToggleObserver();
   appObservable.addObserver(navToggleObserver);
 
-  let mailToggleObserver = new MailToggleObserver();
-  appObservable.addObserver(mailToggleObserver);
-
   let mailClickedObserver = new MailClickedObserver();
   appObservable.addObserver(mailClickedObserver);
 
@@ -193,33 +190,13 @@ class NavToggleObserver extends Observer {
   }
 }
 
-class MailToggleObserver extends Observer {
-  constructor() {
-    super();
-  }
-
-  update() {
-    let mailNavButton = document.querySelector(
-      ".nav-menu-items li:nth-child(2)"
-    );
-    let mailPopUp = document.querySelector(".mail-popup");
-
-    if (mailNavButton.classList.contains("nav-toggled")) {
-      mailPopUp.classList.add("mail-toggled");
-    } else {
-      mailPopUp.classList.remove("mail-toggled");
-    }
-  }
-}
-
 class MailClickedObserver extends Observer {
   constructor() {
     super();
   }
 
   update(event) {
-    if (event.target.classList.contains("mail-popup")) {
-      gmailSignIn();
+    if (event.target.getAttribute("id") === "mail") {
     }
   }
 }
