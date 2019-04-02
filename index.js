@@ -1,3 +1,23 @@
+/*
+  Author: Lester Dela Cruz
+  Description: This application is the javascript for a
+  gmail integration application
+
+  Table of Contents:
+  1. Functions
+    1. initListeners: Initializes listeners for the app
+  
+  2. Classes
+    1. Observable: Based on Observer Pattern. This notifies 
+    all observers.
+    2. Observer: Based on Observer Pattern. This is the templated
+    observer that gets extended
+    3. NavToggleObserver: Extends Observer which listens for changes
+    in click events and updates navigation bar accordingly
+    4. MailToggleObserver: Extends Observer which listens for changes
+    in navigation bar and updates the mail pop up accordingly
+*/
+
 window.onload = () => {
   initListeners();
 };
@@ -50,10 +70,6 @@ const untoggleAllMenuItems = () => {
   });
 };
 
-/*
-	This class listens for updates on the nav menu items
-	and ensures the other items are not toggled.
-*/
 class NavToggleObserver extends Observer {
   constructor() {
     super();

@@ -1,3 +1,20 @@
+/*
+  Author: Lester Dela Cruz
+  Description: This is styling for a gmail integration application
+
+  Table of Contents:
+
+  1. Application Section: Styling for the global application
+  2. Navigation Section: Styling for navigation bar
+  3. Mail Pop Up Section: Styling for the 'Go to mail' popup
+  4. Miscillaneous Styles: Styles that don't really 
+  belong anywhere
+*/
+
+/*
+  Application Section
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +29,10 @@
   width: 100%;
 }
 
+/*
+  Navigation Section
+*/
+
 .nav-bar {
   position: absolute;
   top: 0;
@@ -19,19 +40,13 @@
   height: 50px;
   width: 100%;
   z-index: 10;
-  background: white;
 }
 
 .nav-menu-items {
   display: flex;
 }
 
-.nav-menu-items,
-.mail-popup {
-  background: white;
-}
-
-.nav-menu-items li {
+.nav-menu-item {
   list-style-type: none;
   font-size: 20px;
   color: gray;
@@ -52,10 +67,7 @@
   z-index: inherit;
 }
 
-.nav-menu-items li:hover {
-  background: lightgray;
-}
-
+.nav-menu-items li:hover,
 .nav-toggled {
   background: lightgray;
 }
@@ -64,7 +76,10 @@
   margin-left: 0px;
 }
 
-.go-to-mail-popup {
+/*
+  Mail Pop Up Section
+*/
+.mail-popper {
   position: absolute;
   height: 40px;
   width: 150px;
@@ -88,21 +103,27 @@
   z-index: 1;
 }
 
+.mail-popup:hover {
+  background: lightgrey;
+}
+
+.mail-popup p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 .mail-toggled {
   opacity: 1;
   transform: translateY(0%);
   pointer-events: auto;
 }
 
-.mail-popup:hover {
-  background: lightgrey;
-}
-
-.go-to-mail-popup p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
+/*
+  Miscillaneous Styles
+*/
+.wh-bg {
+  background: white;
 }
